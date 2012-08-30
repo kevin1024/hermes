@@ -1,5 +1,7 @@
 # Hermes
 
+![winged foot](http://openclipart.org/people/spacefem/wingedFoot.svg)
+
 This is just a tiny nodejs server that proxies DNS record lookups over HTTP
 
 ## Usage
@@ -15,11 +17,21 @@ Responses are all in json.  If there is an error, it is returned as a json objec
 {"code":"ENOTFOUND","errno":"ENOTFOUND","syscall":"queryA"}
 ```
 
+You can ask for the following types of records:
+
+  * A: dns.resolve4
+  * AAAA: dns.resolve6
+  * MX: dns.resolveMx
+  * TXT: dns.resolveTxt
+  * SRV: dns.resolveSrv
+  * NS: dns.resolveNs
+  * CNAME: dns.resolveCname
+
 ## Deploying
 
 Hermes is intended to be deployed on heroku.  Install the heroku toolkit and then:
 
-```
+```bash
 $ heroku login
 $ heroku create
 $ git push heroku master
